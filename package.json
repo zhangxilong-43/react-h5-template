@@ -1,0 +1,39 @@
+{
+  "name": "react-h5-template",
+  "version": "1.0.0",
+  "description": "基于react H5项目通用模版",
+  "main": "index.js",
+  "scripts": {
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "prepare": "husky install",
+    "lint": "eslint -c .eslintrc.js src --ext .ts,.tsx,.js,.jsx --fix"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@craco/craco": "^7.1.0",
+    "husky-init": "^8.0.0",
+    "lint-staged": "^15.2.5",
+    "typescript": "^5.4.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.3.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.34.2",
+    "globals": "^15.3.0",
+    "prettier": "^2.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.23.1",
+    "typescript-eslint": "^7.11.0"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx,js,jsx}": [
+      "eslint -c .eslintrc.js --fix"
+    ]
+  }
+}
