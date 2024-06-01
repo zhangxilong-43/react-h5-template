@@ -6,34 +6,80 @@
   "scripts": {
     "start": "craco start",
     "build": "craco build",
-    "test": "craco test",
+    "eject": "craco eject",
     "prepare": "husky install",
     "lint": "eslint -c .eslintrc.js src --ext .ts,.tsx,.js,.jsx --fix"
   },
-  "author": "",
+  "author": "Xilonng Zhang",
   "license": "ISC",
   "dependencies": {
     "@craco/craco": "^7.1.0",
-    "husky-init": "^8.0.0",
-    "lint-staged": "^15.2.5",
-    "typescript": "^5.4.5"
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.97",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-scripts": "5.0.1",
+    "typescript": "^4.9.5",
+    "web-vitals": "^2.1.4"
   },
   "devDependencies": {
+    "@babel/core": "^7.24.6",
+    "@babel/preset-env": "^7.24.6",
+    "@babel/preset-react": "^7.24.6",
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
     "@eslint/js": "^9.3.0",
+    "babel-loader": "^9.1.3",
+    "css-loader": "^7.1.2",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.34.2",
     "globals": "^15.3.0",
+    "html-webpack-plugin": "^5.6.0",
+    "husky": "^8.0.0",
+    "husky-init": "^8.0.0",
+    "lint-staged": "^15.2.5",
     "prettier": "^2.0.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^6.23.1",
-    "typescript-eslint": "^7.11.0"
+    "style-loader": "^4.0.0",
+    "typescript-eslint": "^7.11.0",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "lint-staged": {
     "src/**/*.{ts,tsx,js,jsx}": [
+      "prettier --write",
       "eslint -c .eslintrc.js --fix"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
     ]
   }
 }

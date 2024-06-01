@@ -30,7 +30,7 @@ module.exports = {
     endOfLine: 'auto',
     // 20.embeddedLanguageFormatting: "off",默认是auto,控制被引号包裹的代码是否进行格式化
     embeddedLanguageFormatting: 'off',
-    "singleQuote": true, // 强制单引号
-    "semi": true // 强制句尾分号
+    singleQuote: true, // 强制单引号
+    semi: true // 强制句尾分号
 };
 

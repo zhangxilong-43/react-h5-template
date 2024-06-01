@@ -5,7 +5,6 @@ module.exports = {
     node: true,
   },
   root: true,
-  // extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
   extends: ['eslint:recommended', 'plugin:prettier/recommended', 'plugin:@typescript-eslint/recommended'],
   overrides: [],
   parser: '@typescript-eslint/parser',

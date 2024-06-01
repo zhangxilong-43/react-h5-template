@@ -20,6 +20,7 @@ module.exports = {
       '@types': pathResolve('src/types'),
       '@utils': pathResolve('src/utils'),
       '@contexts': pathResolve('src/contexts'),
+      '@static': pathResolve('src/static'),
     },
     configure(webpackConfig) {
       // 配置扩展扩展名
