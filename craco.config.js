@@ -1,6 +1,10 @@
 const path = require('path');
 const { name } = require('./package.json');
 
+const CracoLessPlugin = require('craco-less');
+const postcssPx2Rem = require('postcss-pxtorem')
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+
 const isProd = process.env.NODE_ENV === 'production'
 const pathResolve = pathUrl => path.join(__dirname, pathUrl);
 
@@ -42,6 +46,7 @@ module.exports = {
       '@utils': pathResolve('src/utils'),
       '@contexts': pathResolve('src/contexts'),
       '@static': pathResolve('src/static'),
+      '@pages': pathResolve('src/pages'),
     },
     configure(webpackConfig) {
       // 配置扩展扩展名
@@ -52,6 +57,42 @@ module.exports = {
       webpackConfig.output.globalObject = 'window';
       return webpackConfig;
     },
+  },
+  plugins: [
+    {
+      plugin: CracoLessPlugin,
+      options: {
+        lessLoaderOptions: { // 配置可以参照webpack的less-loader具体配置
+          lessOptions: {
+            javascriptEnabled: true // 允许less文件中使用js表达式
+          }
+        }
+      }
+    },
+    {
+      plugin: BundleAnalyzerPlugin
+    }
+  ],
+  style: {
+    postcss: {
+      mode: 'extends',
+      loaderOptions: () => {
+        return {
+          postcssOptions: {
+            ident: 'postcss',
+            config: false,
+            plugins: [
+              postcssPx2Rem({
+                rootValue: 37.5, // 设计稿尺寸/10
+                propList: ['*'], // 需要转换的样式属性，默认为 ['*']，即匹配所有属性
+                exclude: /node_modules/i // 排除掉node_modules中转换
+              })
+            ]
+          },
+          sourceMap: false
+        }
+      }
+    }
   },
   devServer: {
     // 本地服务的端口号
