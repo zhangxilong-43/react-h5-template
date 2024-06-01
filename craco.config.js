@@ -1,10 +1,31 @@
 const path = require('path');
 const { name } = require('./package.json');
 
+const isProd = process.env.NODE_ENV === 'production'
 const pathResolve = pathUrl => path.join(__dirname, pathUrl);
 
 module.exports = {
   reactScriptsVersion: 'react-scripts' /* (default value) */,
+  babel: {
+    plugins: [
+      // 生产环境只留console.error、warn，去除console.log
+      [
+        'babel-plugin-transform-remove-console',
+        { exclude: isProd ? ['error', 'warn'] : ['error', 'warn', 'log'] }
+      ]
+    ],
+    presets: [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "chrome": "49",
+            "ios": "10"
+          }
+        }
+      ]
+    ]
+  },
   webpack: {
     alias: {
       '@': pathResolve('src'),

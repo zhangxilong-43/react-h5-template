@@ -1,8 +1,8 @@
 module.exports = {
     // 1.一行代码的最大字符数，默认是80(printWidth: <int>)
     printWidth: 120,
-    // 2.tab宽度为2空格(tabWidth: <int>)
-    tabWidth: 2,
+    // 2.tab宽度为4空格(tabWidth: <int>)
+    tabWidth: 4,
     // 3.是否使用tab来缩进，我们使用空格(useTabs: <bool>)
     useTabs: false,
     // 4.结尾是否添加分号，false的情况下只会在一些导致ASI错误的其工况下在开头加分号，我选择无分号结尾的风格(semi: <bool>)
@@ -30,7 +30,5 @@ module.exports = {
     endOfLine: 'auto',
     // 20.embeddedLanguageFormatting: "off",默认是auto,控制被引号包裹的代码是否进行格式化
     embeddedLanguageFormatting: 'off',
-    singleQuote: true, // 强制单引号
-    semi: true // 强制句尾分号
 };
 
