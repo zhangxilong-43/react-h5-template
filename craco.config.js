@@ -1,5 +1,7 @@
 const path = require('path');
 const { name } = require('./package.json');
+const dotenv = require('dotenv');
+dotenv.config();
 
 const CracoLessPlugin = require('craco-less');
 const postcssPx2Rem = require('postcss-pxtorem');
@@ -52,7 +54,9 @@ module.exports = {
         configure(webpackConfig) {
             // 配置扩展扩展名
             webpackConfig.resolve.extensions = [...webpackConfig.resolve.extensions, ...['.scss', '.css']];
-            webpackConfig.output.publicPath = `http://localhost:${port}/`; // 作为 micro-app 使用时需要添加该字段
+            webpackConfig.output.publicPath = isProd // 在生产环境下需要配置完整路径以便作为微应用引入时能够正确索引到资源
+                ? process.env.__WEBPACK_PUBLIC_PATH__
+                : `http://localhost:${port}/`;
             webpackConfig.output.library = `${name}-[name]`;
             webpackConfig.output.libraryTarget = 'umd';
             webpackConfig.output.globalObject = 'window';
